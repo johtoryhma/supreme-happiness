@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./App.css";
+import Form from "./components/Form";
 import UserList from "./components/UserList";
+import './App.css';
 
 function App() {
   const [users] = useState([
@@ -12,6 +13,7 @@ function App() {
     <div>
       <h1>Hello!</h1>
       <UserList users={users} />
+      <Form />
     </div>
   );
 }
