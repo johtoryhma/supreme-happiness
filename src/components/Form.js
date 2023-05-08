@@ -80,9 +80,9 @@ const Form = ({ users, save }) => {
     } else {
       console.log("ei ollut vikoja");
       save({ name: name, role: role });
+      setName("");
+      setRole("");
     }
-
-    //save(user);
   };
 
   return (
