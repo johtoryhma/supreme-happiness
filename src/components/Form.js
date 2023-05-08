@@ -9,8 +9,21 @@ const Form = ({ users, save }) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
 
+  /**
+   * Changes the role and sets custom validity if needed
+   * @param {event} event
+   */
   const changeRole = (event) => {
-    console.log("Text area has: ", event.target.value);
+    // console.log("Text area has: ", event.target.value);
+    let changedRole = event.target.value.trim();
+
+    if (changedRole == "") {
+      event.target.setCustomValidity(
+        "At least one character - not only whitespace"
+      );
+    } else {
+      event.target.setCustomValidity("");
+    }
     setRole(event.target.value);
   };
 
@@ -21,7 +34,7 @@ const Form = ({ users, save }) => {
   const changeName = (event) => {
     let changedName = event.target.value.trim();
 
-    // if name empty
+    // if name is empty or is already in users
     if (changedName == "") {
       event.target.setCustomValidity(
         "At least one character - not only whitespace"
@@ -71,7 +84,7 @@ const Form = ({ users, save }) => {
       </label>
       <label>
         Role:
-        <input value={role} onChange={changeRole}></input>
+        <input value={role} required onChange={changeRole}></input>
       </label>
       <button onClick={handleSave}>Save</button>
     </form>
