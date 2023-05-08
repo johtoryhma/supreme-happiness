@@ -1,28 +1,79 @@
 import { useState } from "react";
 
-const Form = ({ save }) => {
+/**
+ *
+ * @param {function} save function to save form on App
+ * @returns
+ */
+const Form = ({ users, save }) => {
   const [name, setName] = useState("");
+  const [role, setRole] = useState("");
 
+  const changeRole = (event) => {
+    console.log("Text area has: ", event.target.value);
+    setRole(event.target.value);
+  };
+
+  /**
+   * Changes the name and sets custom validity if needed
+   * @param {*} event
+   */
   const changeName = (event) => {
-    console.log("nimi on nyt: ", event.target.value);
+    let changedName = event.target.value.trim();
+
+    // if name empty
+    if (changedName == "") {
+      event.target.setCustomValidity(
+        "At least one character - not only whitespace"
+      );
+    } else if (isAlreadyInUsers(changedName)) {
+      event.target.setCustomValidity("The name is already in use");
+    } else {
+      event.target.setCustomValidity("");
+    }
     setName(event.target.value);
   };
-  const handleClick = () => {
+
+  /**
+   * If the name is in the users-list, returns true
+   * @param {String} givenName
+   * @returns true if name is in the list, else false
+   */
+  function isAlreadyInUsers(givenName) {
+    for (let user of users) {
+      if (user.name === givenName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Handles the event, when clicking "Save"-button
+   * Checks validity
+   * Checks if there is already user with the same name
+   * @param {event} event
+   */
+  const handleSave = (event) => {
+    event.preventDefault();
     // check for validity
+    event.target.form.reportValidity();
+    console.log(event);
+
     //save(user);
   };
 
   return (
     <form>
-      <label for="name">
-        Name
-        <input name="name" value={name} onChange={changeName}></input>
+      <label>
+        Name:
+        <input name="name" required value={name} onChange={changeName}></input>
       </label>
-      <label for="textarea">
-        Insert text:
-        <input type="text" name="textarea"></input>
+      <label>
+        Role:
+        <input value={role} onChange={changeRole}></input>
       </label>
-      <button onClick={handleClick}>Save</button>
+      <button onClick={handleSave}>Save</button>
     </form>
   );
 };
