@@ -14,7 +14,9 @@ function App() {
    * @param {object} user
    */
   const handleSave = (user) => {
-    setUsers(users.concat(user));
+    console.log(users.slice(-1));
+    let newUser = { ...user, id: users.slice(-1)[0].id + 1 };
+    setUsers(users.concat(newUser));
   };
 
   return (

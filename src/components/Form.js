@@ -8,6 +8,7 @@ import { useState } from "react";
 const Form = ({ users, save }) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
+  const [errors, setErrors] = useState({ name: true, role: true });
 
   /**
    * Changes the role and sets custom validity if needed
@@ -21,6 +22,7 @@ const Form = ({ users, save }) => {
       event.target.setCustomValidity(
         "At least one character - not only whitespace"
       );
+      setErrors({ ...errors, name: true });
     } else {
       event.target.setCustomValidity("");
     }
@@ -68,16 +70,23 @@ const Form = ({ users, save }) => {
    * @param {event} event
    */
   const handleSave = (event) => {
-    event.preventDefault();
     // check for validity
-    event.target.form.reportValidity();
+    event.preventDefault();
     console.log(event);
+
+    if (!event.target.form.checkValidity()) {
+      console.log("oli vikoja validityssä");
+      event.target.form.reportValidity();
+    } else {
+      console.log("ei ollut vikoja");
+      save({ name: name, role: role });
+    }
 
     //save(user);
   };
 
   return (
-    <form>
+    <form noValidate>
       <label>
         Name:
         <input name="name" required value={name} onChange={changeName}></input>
