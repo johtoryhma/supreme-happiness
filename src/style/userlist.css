@@ -1,3 +1,14 @@
+h2 {
+    align-self: center;
+    justify-self: end;
+}
+
 li {
     color: green;
+}
+
+.name-on-list, .role-on-list {
+    color:blue;
+    font-weight: bold;
+    font-style: normal;
 }

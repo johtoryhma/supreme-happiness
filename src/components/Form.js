@@ -18,7 +18,7 @@ const Form = ({ users, save }) => {
     // console.log("Text area has: ", event.target.value);
     let changedRole = event.target.value.trim();
 
-    if (changedRole == "") {
+    if (changedRole === "") {
       event.target.setCustomValidity(
         "At least one character - not only whitespace"
       );
@@ -37,7 +37,7 @@ const Form = ({ users, save }) => {
     let changedName = event.target.value.trim();
 
     // if name is empty or is already in users
-    if (changedName == "") {
+    if (changedName === "") {
       event.target.setCustomValidity(
         "At least one character - not only whitespace"
       );
