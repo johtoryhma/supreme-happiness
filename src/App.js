@@ -4,8 +4,8 @@ import UserList from "./components/UserList";
 
 function App() {
   const [users] = useState([
-    { id: 1, name: "kissa" },
-    { id: 2, name: "koira" },
+    { id: 1, name: "kissa", role: "tank" },
+    { id: 2, name: "koira", role: "healer" },
   ]);
 
   return (
