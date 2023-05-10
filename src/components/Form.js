@@ -86,15 +86,6 @@ const Form = ({ users, save }) => {
     }
   };
 
-  /**
-   * Checks the role user has selected
-   * and sets the role for handleSave()
-   * @param {event} event
-   */
-
-  const onOptionChangeHandler = (event) => {
-  };
-
   return (
     <form noValidate>
       <label>
@@ -104,10 +95,10 @@ const Form = ({ users, save }) => {
       <label>
         Role:
         {/* <input value={role} required onChange={changeRole}></input> */}
-        <select onChange={onOptionChangeHandler}>
+        <select required onChange={changeRole} value={role}>
           <option>Select a role</option>
           {roles.map((role, index) => {
-            return <option key={index} >
+            return <option key={index} value={role}>
               {role}
               </option>
         })}
