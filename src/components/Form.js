@@ -9,6 +9,7 @@ const Form = ({ users, save }) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [errors, setErrors] = useState({ name: true, role: true });
+  const roles = ["tank", "healer", "dps", "no preference"];
 
   /**
    * Changes the role and sets custom validity if needed
@@ -85,6 +86,15 @@ const Form = ({ users, save }) => {
     }
   };
 
+  /**
+   * Checks the role user has selected
+   * and sets the role for handleSave()
+   * @param {event} event
+   */
+
+  const onOptionChangeHandler = (event) => {
+  };
+
   return (
     <form noValidate>
       <label>
@@ -93,7 +103,15 @@ const Form = ({ users, save }) => {
       </label>
       <label>
         Role:
-        <input value={role} required onChange={changeRole}></input>
+        {/* <input value={role} required onChange={changeRole}></input> */}
+        <select onChange={onOptionChangeHandler}>
+          <option>Select a role</option>
+          {roles.map((role, index) => {
+            return <option key={index} >
+              {role}
+              </option>
+        })}
+        </select>
       </label>
       <button onClick={handleSave}>Save</button>
     </form>
