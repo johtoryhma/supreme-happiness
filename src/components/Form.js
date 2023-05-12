@@ -17,9 +17,11 @@ const Form = ({ users, save }) => {
    */
   const changeRole = (event) => {
     // console.log("Text area has: ", event.target.value);
-    let changedRole = event.target.value.trim();
+    let changedRole = event.target.value
+    //.trim();
 
-    if (changedRole == "") {
+      console.log(changedRole)
+    if (changedRole == "Select a role") {
       event.target.setCustomValidity(
         "At least one character - not only whitespace"
       );
@@ -95,8 +97,8 @@ const Form = ({ users, save }) => {
       <label>
         Role:
         {/* <input value={role} required onChange={changeRole}></input> */}
-        <select required onChange={changeRole} value={role}>
-          <option>Select a role</option>
+        <select required onChange={changeRole}>
+        <option key={0} value={role}>Select a role</option>
           {roles.map((role, index) => {
             return <option key={index} value={role}>
               {role}
