@@ -1,4 +1,15 @@
-.list-container {
+html {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.list-container, .form-container {
     border-radius: 10px;
     border: 1px solid black;
+    margin: 1em;
 }

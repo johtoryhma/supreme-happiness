@@ -1,0 +1,20 @@
+form {
+    padding: 1em;
+}
+
+label {
+    display: block;
+    padding: 0.2em;
+}
+
+label > input, select {
+    float:right;
+}
+
+button {
+    margin-top: 1em;
+}
+
+select, input {
+    width: 15em;
+}

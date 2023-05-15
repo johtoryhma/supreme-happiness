@@ -25,7 +25,9 @@ function App() {
       <div className="list-container">
         <UserList users={users} />
       </div>
-      <Form users={users} save={handleSave} />
+      <div className="form-container">
+        <Form users={users} save={handleSave} />
+      </div>
     </div>
   );
 }
