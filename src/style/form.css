@@ -16,6 +16,10 @@ button {
     margin-top: 1em;
 }
 
+li {
+    padding-right: 10px;
+}
+
 select, input {
     width: 15em;
 }

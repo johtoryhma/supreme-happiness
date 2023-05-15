@@ -27,5 +27,9 @@ h1 {
 }
 
 .list-container {
-    min-width: 15em;
+    min-width: 50%;
+}
+
+.form-container {
+    max-height: 8em;
 }
