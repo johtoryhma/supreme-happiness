@@ -6,29 +6,24 @@ import { useState } from "react";
  * @returns
  */
 const Form = ({ users, save }) => {
+  const roles = [
+    { value: "", text: "Select a role" },
+    { value: "tank", text: "tank" },
+    { value: "healer", text: "healer" },
+    { value: "dps", text: "dps" },
+    { value: "no preference", text: "no preference" },
+  ];
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [errors, setErrors] = useState({ name: true, role: true });
-  const roles = ["tank", "healer", "dps", "no preference"];
+  const [role, setRole] = useState(roles[0].value);
 
   /**
    * Changes the role and sets custom validity if needed
    * @param {event} event
    */
   const changeRole = (event) => {
-    // console.log("Text area has: ", event.target.value);
     let changedRole = event.target.value;
-    //.trim();
 
-    if (changedRole === "") {
-      event.target.setCustomValidity(
-        "At least one character - not only whitespace"
-      );
-      setErrors({ ...errors, name: true });
-    } else {
-      event.target.setCustomValidity("");
-    }
-    setRole(event.target.value);
+    setRole(changedRole);
   };
 
   /**
@@ -74,42 +69,38 @@ const Form = ({ users, save }) => {
   const handleSave = (event) => {
     // check for validity
     event.preventDefault();
-    console.log(event);
 
-    if (!event.target.form.checkValidity()) {
+    if (!event.target.checkValidity()) {
       console.log("oli vikoja validityssä");
-      event.target.form.reportValidity();
+      event.target.reportValidity();
     } else {
       console.log("ei ollut vikoja");
       save({ name: name, role: role });
       setName("");
-      setRole("");
+      setRole(roles[0].value);
+      event.target.reset();
     }
   };
 
   return (
-    <form noValidate>
+    <form noValidate onSubmit={handleSave}>
       <label>
         Name:
         <input name="name" required value={name} onChange={changeName}></input>
       </label>
       <label>
         Role:
-        {/* <input value={role} required onChange={changeRole}></input> */}
         <select required onChange={changeRole}>
-          <option key={0} value={role}>
-            Select a role
-          </option>
           {roles.map((role, index) => {
             return (
-              <option key={index} value={role}>
-                {role}
+              <option key={index} value={role.value}>
+                {role.text}
               </option>
             );
           })}
         </select>
       </label>
-      <button onClick={handleSave}>Save</button>
+      <button type="submit">Save</button>
     </form>
   );
 };
