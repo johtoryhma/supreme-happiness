@@ -22,7 +22,9 @@ function App() {
   return (
     <div>
       <h1>Hello!</h1>
-      <UserList users={users} />
+      <div className="list-container">
+        <UserList users={users} />
+      </div>
       <Form users={users} save={handleSave} />
     </div>
   );
