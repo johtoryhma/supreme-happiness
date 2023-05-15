@@ -9,6 +9,7 @@ label {
 
 label > input, select {
     float:right;
+    margin-left:0.2em;
 }
 
 button {

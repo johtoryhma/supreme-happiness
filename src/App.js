@@ -21,12 +21,14 @@ function App() {
 
   return (
     <div>
-      <h1>Hello!</h1>
-      <div className="list-container">
-        <UserList users={users} />
-      </div>
-      <div className="form-container">
-        <Form users={users} save={handleSave} />
+      <h1>Gamer stats</h1>
+      <div className="main-container">
+        <div className="list-container">
+          <UserList users={users} />
+        </div>
+        <div className="form-container">
+          <Form users={users} save={handleSave} />
+        </div>
       </div>
     </div>
   );
