@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Form from "./components/Form";
 import UserList from "./components/UserList";
 import Statbox from "./components/Statbox";
