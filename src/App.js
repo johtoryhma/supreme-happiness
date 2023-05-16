@@ -10,12 +10,12 @@ function App() {
     { id: 2, name: "koira", role: "healer" },
   ]);
 
-  const roles = [
-    { name: "tank", id: 1 },
-    { name: "healer", id: 2 },
-    { name: "dps", id: 3 },
-    { name: "no preference", id: 4 },
-  ];
+  const [roles, setRoles] = useState([
+    { name: "tank", id: 1, count: 1 }, // because users have 1
+    { name: "healer", id: 2, count: 1 }, // because users have 1
+    { name: "dps", id: 3, count: 0 },
+    { name: "no preference", id: 4, count: 0 },
+  ]);
 
   /**
    * Adds user to users
@@ -24,6 +24,14 @@ function App() {
   const handleSave = (user) => {
     //console.log(users.slice(-1));
     let newUser = { ...user, id: users.slice(-1)[0].id + 1 };
+    let newRoles = [...roles];
+    for (let role of newRoles) {
+      if (user.role === role.name) {
+        role.count += 1;
+        setRoles(newRoles);
+      }
+    }
+    console.log(newRoles);
     setUsers(users.concat(newUser));
   };
 

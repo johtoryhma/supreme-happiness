@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../style/statbox.css";
 
 const Statbox = ({ users, roles }) => {
-  const [selectedRole, setSelectedRole] = useState("");
-  const handleChange = () => {};
+  const [selectedRole, setSelectedRole] = useState(roles[0]);
+
+  const handleChange = (e) => {
+    let targetRole = e.target.value;
+    console.log(targetRole);
+    for (let role of roles) {
+      if (role.name === targetRole) {
+        console.log(role);
+        setSelectedRole(role);
+      }
+    }
+  };
 
   return (
     <table>
@@ -19,10 +29,16 @@ const Statbox = ({ users, roles }) => {
         <tr>
           <th>
             <select onChange={handleChange}>
-              <option>kissa</option>
+              {roles.map((role) => {
+                return (
+                  <option value={role.name} key={role.id}>
+                    {role.name}
+                  </option>
+                );
+              })}
             </select>
           </th>
-          <td>{selectedRole}</td>
+          <td>{selectedRole.count}</td>
         </tr>
       </tbody>
     </table>
