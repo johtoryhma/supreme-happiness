@@ -19,7 +19,7 @@ h1 {
     justify-content: center;
 }
 
-.list-container, .form-container {
+.list-container, .form-container, .stats-container {
     max-width: 20em;
     border-radius: 10px;
     border: 1px solid black;

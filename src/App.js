@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import UserList from "./components/UserList";
+import Statbox from "./components/Statbox";
 import "./App.css";
 
 function App() {
@@ -23,11 +24,16 @@ function App() {
     <div>
       <h1>Gamer stats</h1>
       <div className="main-container">
+        <div className="fs-container">
+          <div className="form-container">
+            <Form users={users} save={handleSave} />
+          </div>
+          <div className="stats-container">
+            <Statbox />
+          </div>
+        </div>
         <div className="list-container">
           <UserList users={users} />
-        </div>
-        <div className="form-container">
-          <Form users={users} save={handleSave} />
         </div>
       </div>
     </div>

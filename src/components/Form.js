@@ -87,7 +87,13 @@ const Form = ({ users, save }) => {
     <form noValidate onSubmit={handleSave}>
       <label>
         Name:
-        <input name="name" required value={name} onChange={changeName}></input>
+        <input
+          name="name"
+          required
+          value={name}
+          onChange={changeName}
+          autocomplete="off"
+        ></input>
       </label>
       <label>
         Role:
