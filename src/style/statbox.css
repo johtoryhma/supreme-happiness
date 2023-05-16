@@ -1,0 +1,33 @@
+table {
+  padding: 1em;
+}
+
+th {
+  text-align: left;
+  min-width: 10em;
+}
+
+td {
+  min-width: 4em;
+  text-align: center;
+}
+
+th,
+td,
+tr {
+  border-color: #d6eeee;
+}
+
+tr:nth-child(odd) {
+  background-color: #d6eeee;
+}
+
+table select {
+  border: dotted white;
+  margin-right: 1em;
+  background-color: #d6eeee;
+  font-weight: bold;
+  font-family: "Open sans";
+  float: left;
+  width: 6em;
+}

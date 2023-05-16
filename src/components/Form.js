@@ -6,14 +6,15 @@ import "../style/form.css";
  * @param {function} save function to save form on App
  * @returns
  */
-const Form = ({ users, save }) => {
-  const roles = [
-    { value: "", text: "Select a role" },
-    { value: "tank", text: "tank" },
-    { value: "healer", text: "healer" },
-    { value: "dps", text: "dps" },
-    { value: "no preference", text: "no preference" },
-  ];
+const Form = ({ users, save, rolesGiven }) => {
+  const roles = [{ value: "", name: "Select a role", id: 0 }].concat(
+    rolesGiven.map((role) => {
+      return {
+        ...role,
+        value: role.name,
+      };
+    })
+  );
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
 
@@ -72,10 +73,10 @@ const Form = ({ users, save }) => {
     event.preventDefault();
 
     if (!event.target.checkValidity()) {
-      console.log("oli vikoja validityssä");
+      //console.log("oli vikoja validityssä");
       event.target.reportValidity();
     } else {
-      console.log("ei ollut vikoja");
+      //console.log("ei ollut vikoja");
       save({ name: name, role: role });
       setName("");
       setRole(roles[0].value);
@@ -87,15 +88,21 @@ const Form = ({ users, save }) => {
     <form noValidate onSubmit={handleSave}>
       <label>
         Name:
-        <input name="name" required value={name} onChange={changeName}></input>
+        <input
+          name="name"
+          required
+          value={name}
+          onChange={changeName}
+          autoComplete="off"
+        ></input>
       </label>
       <label>
         Role:
         <select required onChange={changeRole}>
-          {roles.map((role, index) => {
+          {roles.map((role) => {
             return (
-              <option key={index} value={role.value}>
-                {role.text}
+              <option key={role.id} value={role.value}>
+                {role.name}
               </option>
             );
           })}

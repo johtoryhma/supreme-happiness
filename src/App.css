@@ -1,35 +1,46 @@
 html {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .main-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.list-container, .form-container {
-    max-width: 20em;
-    border-radius: 10px;
-    border: 1px solid black;
-    margin: 1em;
+.list-container,
+.form-container,
+.stats-container {
+  max-width: 20em;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 1em;
+}
+
+.form-container,
+.stats-container {
+  display: flex;
+  justify-content: center;
 }
 
 .list-container {
-    min-width: 50%;
+  min-width: 50%;
 }
 
 .form-container {
-    max-height: 8em;
+  max-height: 8em;
 }
