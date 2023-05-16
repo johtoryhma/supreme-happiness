@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="root-container">
       <Header text="Gamer stats" />
       <div className="main-container">
         <div className="fs-container">
