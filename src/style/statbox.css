@@ -1,3 +1,21 @@
 table {
     padding: 1em;
 }
+
+th {
+    text-align: left;
+}
+
+th, td, tr {
+    border-color:#D6EEEE;
+}    
+
+tr:nth-child(odd) {
+    background-color: #D6EEEE;
+}
+
+table select {
+    border: none;
+    background-color:#D6EEEE;
+    font-weight: bold;
+}

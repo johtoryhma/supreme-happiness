@@ -1,24 +1,40 @@
+import { useState } from "react";
 import "../style/statbox.css";
 
-const Statbox = () => {
+const Statbox = ({ users, roles }) => {
+  const [selectedRole, setSelectedRole] = useState("");
+  const handleChange = () => {};
+
   return (
     <table>
-      <thead>
-        <tr>
-          <th>User count:</th>
-          <th>Most popular role:</th>
-          <th></th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
-          <td>???</td>
-          <td>???</td>
+          <th>User count:</th>
+          <td>{users.length}</td>
+        </tr>
+        <tr>
+          <th>Most popular role:</th>
           <td></td>
+        </tr>
+        <tr>
+          <th>
+            <select onChange={handleChange}>
+              <option>kissa</option>
+            </select>
+          </th>
+          <td>{selectedRole}</td>
         </tr>
       </tbody>
     </table>
   );
 };
+
+/*
+<table>
+    <tbody>
+        <tr>
+            <th> lskdjflke </th>
+            <td> alkjf </td>
+*/
 
 export default Statbox;

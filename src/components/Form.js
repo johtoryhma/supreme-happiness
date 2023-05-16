@@ -73,10 +73,10 @@ const Form = ({ users, save, rolesGiven }) => {
     event.preventDefault();
 
     if (!event.target.checkValidity()) {
-      console.log("oli vikoja validityssä");
+      //console.log("oli vikoja validityssä");
       event.target.reportValidity();
     } else {
-      console.log("ei ollut vikoja");
+      //console.log("ei ollut vikoja");
       save({ name: name, role: role });
       setName("");
       setRole(roles[0].value);

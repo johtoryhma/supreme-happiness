@@ -22,7 +22,7 @@ function App() {
    * @param {object} user
    */
   const handleSave = (user) => {
-    console.log(users.slice(-1));
+    //console.log(users.slice(-1));
     let newUser = { ...user, id: users.slice(-1)[0].id + 1 };
     setUsers(users.concat(newUser));
   };
@@ -36,7 +36,7 @@ function App() {
             <Form users={users} save={handleSave} rolesGiven={roles} />
           </div>
           <div className="stats-container">
-            <Statbox />
+            <Statbox users={users} roles={roles} />
           </div>
         </div>
         <div className="list-container">
