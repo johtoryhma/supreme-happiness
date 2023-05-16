@@ -10,6 +10,13 @@ function App() {
     { id: 2, name: "koira", role: "healer" },
   ]);
 
+  const roles = [
+    { name: "tank", id: 1 },
+    { name: "healer", id: 2 },
+    { name: "dps", id: 3 },
+    { name: "no preference", id: 4 },
+  ];
+
   /**
    * Adds user to users
    * @param {object} user
@@ -26,7 +33,7 @@ function App() {
       <div className="main-container">
         <div className="fs-container">
           <div className="form-container">
-            <Form users={users} save={handleSave} />
+            <Form users={users} save={handleSave} rolesGiven={roles} />
           </div>
           <div className="stats-container">
             <Statbox />
