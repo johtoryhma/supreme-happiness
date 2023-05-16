@@ -14,7 +14,7 @@ function App() {
     { name: "tank", id: 1, count: 1 }, // because users have 1
     { name: "healer", id: 2, count: 1 }, // because users have 1
     { name: "dps", id: 3, count: 0 },
-    { name: "no preference", id: 4, count: 0 },
+    { name: "flex", id: 4, count: 0 },
   ]);
 
   /**
@@ -31,7 +31,7 @@ function App() {
         setRoles(newRoles);
       }
     }
-    console.log(newRoles);
+    //console.log(newRoles);
     setUsers(users.concat(newUser));
   };
 

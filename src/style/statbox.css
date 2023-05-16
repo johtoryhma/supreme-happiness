@@ -4,10 +4,11 @@ table {
 
 th {
   text-align: left;
+  min-width: 10em;
 }
 
 td {
-  min-width: 2em;
+  min-width: 4em;
   text-align: center;
 }
 
@@ -22,7 +23,11 @@ tr:nth-child(odd) {
 }
 
 table select {
-  border: none;
+  border: dotted white;
+  margin-right: 1em;
   background-color: #d6eeee;
   font-weight: bold;
+  font-family: "Open sans";
+  float: left;
+  width: 6em;
 }

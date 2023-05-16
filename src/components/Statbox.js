@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../style/statbox.css";
 
 const Statbox = ({ users, roles }) => {
@@ -6,13 +6,22 @@ const Statbox = ({ users, roles }) => {
 
   const handleChange = (e) => {
     let targetRole = e.target.value;
-    console.log(targetRole);
+
     for (let role of roles) {
       if (role.name === targetRole) {
-        console.log(role);
         setSelectedRole(role);
       }
     }
+  };
+
+  const mostCommonRole = () => {
+    let mostCommon = { count: 0 };
+
+    for (let role of roles) {
+      if (role.count > mostCommon.count) mostCommon = role;
+    }
+
+    return mostCommon.name;
   };
 
   return (
@@ -24,7 +33,7 @@ const Statbox = ({ users, roles }) => {
         </tr>
         <tr>
           <th>Most popular role:</th>
-          <td></td>
+          <td>{mostCommonRole()}</td>
         </tr>
         <tr>
           <th>
@@ -32,11 +41,12 @@ const Statbox = ({ users, roles }) => {
               {roles.map((role) => {
                 return (
                   <option value={role.name} key={role.id}>
-                    {role.name}
+                    {role.name.charAt(0).toUpperCase() + role.name.slice(1)}
                   </option>
                 );
               })}
             </select>
+            count:
           </th>
           <td>{selectedRole.count}</td>
         </tr>
@@ -44,13 +54,5 @@ const Statbox = ({ users, roles }) => {
     </table>
   );
 };
-
-/*
-<table>
-    <tbody>
-        <tr>
-            <th> lskdjflke </th>
-            <td> alkjf </td>
-*/
 
 export default Statbox;
