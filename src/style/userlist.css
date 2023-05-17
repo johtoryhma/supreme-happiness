@@ -1,20 +1,22 @@
 h2 {
-    align-self: center;
-    justify-self: end;
-    padding-left: 3em;
+  align-self: center;
+  justify-self: end;
+  padding-left: 3em;
 }
 
 ul {
-    list-style-type: disc;
-    padding-bottom: 0.83em;
+  list-style-type: disc;
+  padding-bottom: 0.83em;
 }
 
 li {
-    color: green;
+  color: green;
 }
 
-.name-on-list, .role-on-list {
-    color:blue;
-    font-weight: bold;
-    font-style: normal;
+.name-on-list,
+.role-on-list,
+.date-on-list {
+  color: blue;
+  font-weight: bold;
+  font-style: normal;
 }

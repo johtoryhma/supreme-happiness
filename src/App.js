@@ -7,8 +7,18 @@ import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([
-    { id: 1, name: "kissa", role: "tank" },
-    { id: 2, name: "koira", role: "healer" },
+    {
+      id: 1,
+      name: "kissa",
+      role: "tank",
+      joinDate: new Date(Date.UTC(2012, 11, 12, 3, 0, 0)),
+    },
+    {
+      id: 2,
+      name: "koira",
+      role: "healer",
+      joinDate: new Date(Date.UTC(2015, 8, 1, 3, 0, 0)),
+    },
   ]);
 
   const [roles, setRoles] = useState([
@@ -25,8 +35,11 @@ function App() {
    * @param {object} user
    */
   const handleSave = (user) => {
-    //console.log(users.slice(-1));
-    let newUser = { ...user, id: users.slice(-1)[0].id + 1 };
+    let newUser = {
+      ...user,
+      id: users.slice(-1)[0].id + 1,
+      joinDate: new Date(Date.now()).toISOString(),
+    };
     let newRoles = [...roles];
     for (let role of newRoles) {
       if (user.role === role.name) {
@@ -34,7 +47,6 @@ function App() {
         setRoles(newRoles);
       }
     }
-    //console.log(newRoles);
     setUsers(users.concat(newUser));
   };
 
