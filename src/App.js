@@ -2,6 +2,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 import UserList from "./components/UserList";
 import Statbox from "./components/Statbox";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
     { name: "dps", id: 3, count: 0 },
     { name: "flex", id: 4, count: 0 },
   ]);
+
+  //useEffect(() => { document.body.style.backgroundColor = 'aquamarine' }, []);
 
   /**
    * Adds user to users
@@ -36,8 +39,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Gamer stats</h1>
+    <div className="root-container">
+      <Header text="Gamer stats" />
       <div className="main-container">
         <div className="fs-container">
           <div className="form-container">
