@@ -11,6 +11,7 @@ ul {
 
 li {
   color: green;
+  position: relative;
 }
 
 .name-on-list,
@@ -19,4 +20,20 @@ li {
   color: blue;
   font-weight: bold;
   font-style: normal;
+}
+
+.user-card {
+  visibility: hidden;
+  position: absolute;
+  background: white;
+  padding: 0.5em;
+  box-shadow: 3px 6px 10px rgb(43, 43, 43);
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  top: -3em;
+  left: -3em;
+}
+
+.userlist {
+  width: 100%;
 }

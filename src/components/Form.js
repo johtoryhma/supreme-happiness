@@ -94,6 +94,7 @@ const Form = ({ users, save, rolesGiven }) => {
           value={name}
           onChange={changeName}
           autoComplete="off"
+          maxLength={25}
         ></input>
       </label>
       <label>
