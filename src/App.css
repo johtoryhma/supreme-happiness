@@ -43,14 +43,15 @@ body {
 }
 
 .list-container,
-.form-container,
-.stats-container {
+.form-and-header-container,
+.stats-and-header-container {
   max-width: 20em;
   border-radius: 10px;
   border: 1px solid whitesmoke;
   margin: 1em;
   background-color: white;
   box-shadow: 3px 6px 10px rgb(43, 43, 43);
+  position: relative;
 }
 
 .form-container,

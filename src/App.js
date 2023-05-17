@@ -4,6 +4,7 @@ import UserList from "./components/UserList";
 import Statbox from "./components/Statbox";
 import Header from "./components/Header";
 import "./App.css";
+import Header2 from "./components/Header2";
 
 function App() {
   const [users, setUsers] = useState([
@@ -55,14 +56,21 @@ function App() {
       <Header text="Gamer stats" />
       <div className="main-container">
         <div className="fs-container">
-          <div className="form-container">
-            <Form users={users} save={handleSave} rolesGiven={roles} />
+          <div className="form-and-header-container">
+            <Header2 text="Join" />
+            <div className="form-container">
+              <Form users={users} save={handleSave} rolesGiven={roles} />
+            </div>
           </div>
-          <div className="stats-container">
-            <Statbox users={users} roles={roles} />
+          <div className="stats-and-header-container">
+            <Header2 text="Stats" />
+            <div className="stats-container">
+              <Statbox users={users} roles={roles} />
+            </div>
           </div>
         </div>
         <div className="list-container">
+          <Header2 text="Users" />
           <UserList users={users} />
         </div>
       </div>

@@ -33,3 +33,7 @@ li {
   top: -3em;
   left: -3em;
 }
+
+.userlist {
+  width: 100%;
+}
