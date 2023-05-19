@@ -15,10 +15,9 @@ const BigheadPicker = () => {
       hairColor="black"
       hat="none"
       hatColor="green"
-      lashes="false"
+      lashes="true"
       lipColor="purple"
       mask="true"
-      faceMask="true"
       mouth="open"
       skinTone="brown"
     />

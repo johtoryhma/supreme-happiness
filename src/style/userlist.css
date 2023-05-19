@@ -32,6 +32,7 @@ li {
   border: 1px solid whitesmoke;
   top: -3em;
   left: -3em;
+  z-index: 5;
 }
 
 .userlist {
