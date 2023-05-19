@@ -1,17 +1,39 @@
 import { BigHead } from "@bigheads/core";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const UserName = ({ user }) => {
   const [show, setShow] = useState(false);
+  const [cardPosition, setCardPosition] = useState({ top: 0, left: 0 });
+  const cardRef = useRef(null);
+
+  const showCard = (e) => {
+    const cardRect = cardRef.current.getBoundingClientRect();
+    setCardPosition({
+      top: 0 - cardRect.height,
+    });
+    setShow(true);
+  };
+
+  const hideCard = () => {
+    setShow(false);
+  };
 
   return (
-    <i
-      className="name-on-list"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
+    <i className="name-on-list" onMouseEnter={showCard} onMouseLeave={hideCard}>
       {user.name}
-      <div className="user-card" style={show ? { visibility: "visible" } : {}}>
+      <div
+        ref={cardRef}
+        className="user-card"
+        style={
+          show
+            ? {
+                visibility: "visible",
+                top: cardPosition.top,
+                left: cardPosition.left,
+              }
+            : {}
+        }
+      >
         User is {user.name} and looks like this:
         <BigHead
           accessory={user.avatar.accessory}

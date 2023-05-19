@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../style/form.css";
-import BigheadPicker from "./BigheadPicker";
+import { BigHead } from "@bigheads/core";
 
 /**
  *
@@ -18,9 +18,13 @@ const Form = ({ users, save, rolesGiven }) => {
   );
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
+  const [avatar, setAvatar] = useState({
+    circleColor: "blue",
+    mask: "true", //stays
+  });
 
   /**
-   * Changes the role and sets custom validity if needed
+   * Changes the role and sets   custom validity if needed
    * @param {event} event
    */
   const changeRole = (event) => {
@@ -110,9 +114,27 @@ const Form = ({ users, save, rolesGiven }) => {
           })}
         </select>
       </label>
-      <div>
-        <BigheadPicker />
-      </div>
+      <BigHead
+        accessory={avatar.accessory}
+        body={avatar.body}
+        circleColor={avatar.circleColor}
+        clothing={avatar.clothing}
+        clothingColor={avatar.clothingColor}
+        eyebrows={avatar.eyebrows}
+        eyes={avatar.eyes}
+        facialHair={avatar.facialHair}
+        graphic={avatar.graphic}
+        hair={avatar.hair}
+        hairColor={avatar.hairColor}
+        hat={avatar.hat}
+        hatColor={avatar.hatColor}
+        lashes={avatar.lashes}
+        lipColor={avatar.lipColor}
+        mask={avatar.mask}
+        faceMask={avatar.faceMask}
+        mouth={avatar.mouth}
+        skinTone={avatar.skinTone}
+      />
       <button type="submit">Save</button>
     </form>
   );
