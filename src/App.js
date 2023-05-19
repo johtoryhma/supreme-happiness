@@ -55,18 +55,16 @@ function App() {
     <div className="root-container">
       <Header text="Gamer stats" />
       <div className="main-container">
-        <div className="fs-container">
-          <div className="form-and-header-container">
-            <Header2 text="Join" />
-            <div className="form-container">
-              <Form users={users} save={handleSave} rolesGiven={roles} />
-            </div>
+        <div className="form-and-header-container">
+          <Header2 text="Join" />
+          <div className="form-container">
+            <Form users={users} save={handleSave} rolesGiven={roles} />
           </div>
-          <div className="stats-and-header-container">
-            <Header2 text="Stats" />
-            <div className="stats-container">
-              <Statbox users={users} roles={roles} />
-            </div>
+        </div>
+        <div className="stats-and-header-container">
+          <Header2 text="Stats" />
+          <div className="stats-container">
+            <Statbox users={users} roles={roles} />
           </div>
         </div>
         <div className="list-container">

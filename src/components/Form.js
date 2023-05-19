@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../style/form.css";
+import BigheadPicker from "./BigheadPicker";
 
 /**
  *
@@ -109,6 +110,9 @@ const Form = ({ users, save, rolesGiven }) => {
           })}
         </select>
       </label>
+      <div>
+        <BigheadPicker />
+      </div>
       <button type="submit">Save</button>
     </form>
   );
