@@ -19,11 +19,7 @@ const Form = ({ users, save, rolesGiven }) => {
   );
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
-  const [avatar, setAvatar] = useState({
-    ...getRandomOptions(),
-    circleColor: "blue",
-    mask: "true", //stays
-  });
+  const [avatar, setAvatar] = useState(getRandomOptions());
 
   /**
    * Changes the role and sets   custom validity if needed
@@ -85,11 +81,7 @@ const Form = ({ users, save, rolesGiven }) => {
       save({ name: name, role: role, avatar: avatar });
       setName("");
       setRole(roles[0].value);
-      setAvatar({
-        ...getRandomOptions(),
-        circleColor: "blue",
-        mask: "true", //stays
-      });
+      setAvatar(getRandomOptions());
       event.target.reset();
     }
   };
@@ -141,6 +133,9 @@ const Form = ({ users, save, rolesGiven }) => {
           mouth={avatar.mouth}
           skinTone={avatar.skinTone}
         />
+        <button type="button" onClick={() => setAvatar(getRandomOptions())}>
+          Random Avatar
+        </button>
       </div>
       <button type="submit">Save</button>
     </form>
