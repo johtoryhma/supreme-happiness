@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../style/form.css";
 import { BigHead } from "@bigheads/core";
+import { getRandomOptions } from "../modules/getRandomOptions.ts";
 
 /**
  *
@@ -19,6 +20,7 @@ const Form = ({ users, save, rolesGiven }) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
   const [avatar, setAvatar] = useState({
+    ...getRandomOptions(),
     circleColor: "blue",
     mask: "true", //stays
   });
@@ -78,13 +80,16 @@ const Form = ({ users, save, rolesGiven }) => {
     event.preventDefault();
 
     if (!event.target.checkValidity()) {
-      //console.log("oli vikoja validityssä");
       event.target.reportValidity();
     } else {
-      //console.log("ei ollut vikoja");
-      save({ name: name, role: role });
+      save({ name: name, role: role, avatar: avatar });
       setName("");
       setRole(roles[0].value);
+      setAvatar({
+        ...getRandomOptions(),
+        circleColor: "blue",
+        mask: "true", //stays
+      });
       event.target.reset();
     }
   };
@@ -114,27 +119,29 @@ const Form = ({ users, save, rolesGiven }) => {
           })}
         </select>
       </label>
-      <BigHead
-        accessory={avatar.accessory}
-        body={avatar.body}
-        circleColor={avatar.circleColor}
-        clothing={avatar.clothing}
-        clothingColor={avatar.clothingColor}
-        eyebrows={avatar.eyebrows}
-        eyes={avatar.eyes}
-        facialHair={avatar.facialHair}
-        graphic={avatar.graphic}
-        hair={avatar.hair}
-        hairColor={avatar.hairColor}
-        hat={avatar.hat}
-        hatColor={avatar.hatColor}
-        lashes={avatar.lashes}
-        lipColor={avatar.lipColor}
-        mask={avatar.mask}
-        faceMask={avatar.faceMask}
-        mouth={avatar.mouth}
-        skinTone={avatar.skinTone}
-      />
+      <div>
+        <BigHead
+          accessory={avatar.accessory}
+          body={avatar.body}
+          circleColor={avatar.circleColor}
+          clothing={avatar.clothing}
+          clothingColor={avatar.clothingColor}
+          eyebrows={avatar.eyebrows}
+          eyes={avatar.eyes}
+          facialHair={avatar.facialHair}
+          graphic={avatar.graphic}
+          hair={avatar.hair}
+          hairColor={avatar.hairColor}
+          hat={avatar.hat}
+          hatColor={avatar.hatColor}
+          lashes={avatar.lashes}
+          lipColor={avatar.lipColor}
+          mask={avatar.mask}
+          faceMask={avatar.faceMask}
+          mouth={avatar.mouth}
+          skinTone={avatar.skinTone}
+        />
+      </div>
       <button type="submit">Save</button>
     </form>
   );
