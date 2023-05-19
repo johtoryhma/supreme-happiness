@@ -2,6 +2,10 @@ form {
   padding: 0em 1em 1em 1em;
 }
 
+form * {
+  font-size: medium;
+}
+
 label {
   display: block;
   padding: 0.2em;
@@ -21,7 +25,26 @@ li {
   padding-right: 10px;
 }
 
-select,
+input,
+form select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form button,
+form select,
 input {
-  width: 15em;
+  background-color: #d6eeee;
+  padding: 6px 10px 10px 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+button:hover,
+select:hover {
+  background-color: #c4e9e9;
+}
+
+#save-button {
+  font-size: large;
 }

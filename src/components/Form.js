@@ -99,18 +99,15 @@ const Form = ({ users, save, rolesGiven }) => {
           maxLength={25}
         ></input>
       </label>
-      <label>
-        Role:
-        <select required onChange={changeRole}>
-          {roles.map((role) => {
-            return (
-              <option key={role.id} value={role.value}>
-                {role.name}
-              </option>
-            );
-          })}
-        </select>
-      </label>
+      <select required onChange={changeRole}>
+        {roles.map((role) => {
+          return (
+            <option key={role.id} value={role.value}>
+              {role.name}
+            </option>
+          );
+        })}
+      </select>
       <div>
         <BigHead
           accessory={avatar.accessory}
@@ -137,7 +134,9 @@ const Form = ({ users, save, rolesGiven }) => {
           Random Avatar
         </button>
       </div>
-      <button type="submit">Save</button>
+      <button id="save-button" type="submit">
+        Save
+      </button>
     </form>
   );
 };
