@@ -1,4 +1,6 @@
 import { useState } from "react";
+import moment from "moment/moment";
+
 import Form from "./components/Form";
 import UserList from "./components/UserList";
 import Statbox from "./components/Statbox";
@@ -12,7 +14,7 @@ function App() {
       id: 1,
       name: "kissa",
       role: "tank",
-      joinDate: new Date(Date.UTC(2012, 11, 12, 3, 0, 0)),
+      joinDate: moment("20121116", "YYYYMMDD"),
       avatar: {
         accessory: "shades",
         body: "chest",
@@ -37,7 +39,7 @@ function App() {
       id: 2,
       name: "koira",
       role: "healer",
-      joinDate: new Date(Date.UTC(2015, 8, 1, 3, 0, 0)),
+      joinDate: moment("20150801", "YYYYMMDD"),
       avatar: {
         accessory: "roundGlasses",
         body: "breasts",
@@ -59,6 +61,11 @@ function App() {
       },
     },
   ]);
+  // very badly executed:
+  const [basicStats, setBasicStats] = useState({
+    firstJoinDate: users[0].joinDate,
+    latestJoinDate: users[1].joinDate,
+  });
 
   const [roles, setRoles] = useState([
     { name: "tank", id: 1, count: 1 }, // because users have 1
@@ -77,7 +84,7 @@ function App() {
     let newUser = {
       ...user,
       id: users.slice(-1)[0].id + 1,
-      joinDate: new Date(Date.now()).toISOString(),
+      joinDate: moment(),
     };
     let newRoles = [...roles];
     for (let role of newRoles) {
@@ -86,7 +93,9 @@ function App() {
         setRoles(newRoles);
       }
     }
+    console.log(users.concat(newUser));
     setUsers(users.concat(newUser));
+    setBasicStats({ ...basicStats, latestJoinDate: newUser.joinDate });
   };
 
   return (
@@ -102,7 +111,7 @@ function App() {
         <div className="stats-and-header-container">
           <Header2 text="Stats" />
           <div className="stats-container">
-            <Statbox users={users} roles={roles} />
+            <Statbox users={users} roles={roles} basicStats={basicStats} />
           </div>
         </div>
         <div className="list-container">

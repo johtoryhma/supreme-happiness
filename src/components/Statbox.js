@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../style/statbox.css";
 
-const Statbox = ({ users, roles }) => {
+const Statbox = ({ users, roles, basicStats }) => {
   const [selectedRole, setSelectedRole] = useState(roles[0]);
 
   const handleChange = (e) => {
@@ -52,7 +52,15 @@ const Statbox = ({ users, roles }) => {
         </tr>
         <tr>
           <th>Earliest join date:</th>
-          <td>{`${users[0].joinDate.getDate()}.${users[0].joinDate.getMonth()}.${users[0].joinDate.getFullYear()}`}</td>
+          <td>{basicStats.firstJoinDate.format("D.M.YYYY")}</td>
+        </tr>
+        <tr>
+          <th>...which was:</th>
+          <td>{basicStats.firstJoinDate.fromNow()}</td>
+        </tr>
+        <tr>
+          <th>Latest join date</th>
+          <td>{basicStats.latestJoinDate.format("D.M.YYYY")}</td>
         </tr>
       </tbody>
     </table>
