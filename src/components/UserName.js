@@ -1,6 +1,14 @@
 import { BigHead } from "@bigheads/core";
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Makes username hoverable and clickable so that
+ * the usercard is shown if mouse clicks or hovers over the name
+ * Now works so that one can be clicked and another one hovered over
+ * at the same time
+ * @param {object} user
+ * @returns
+ */
 const UserName = ({ user }) => {
   const [show, setShow] = useState(false);
   const [clicked, setClicked] = useState(false);
