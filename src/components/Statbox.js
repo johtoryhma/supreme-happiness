@@ -25,7 +25,7 @@ const Statbox = ({ users, roles, basicStats }) => {
   };
 
   return (
-    <table>
+    <table className="statbox-table">
       <tbody>
         <tr>
           <th>User count:</th>

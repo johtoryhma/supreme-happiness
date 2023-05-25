@@ -52,6 +52,7 @@ body {
   background-color: white;
   box-shadow: 3px 6px 10px rgb(43, 43, 43);
   position: relative;
+  max-height: fit-content;
 }
 
 .form-container,
@@ -66,6 +67,5 @@ body {
 }
 
 .list-and-header-container {
-  min-width: 50%;
-  max-width: 100%;
+  min-width: fit-content;
 }

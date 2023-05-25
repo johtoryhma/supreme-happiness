@@ -64,3 +64,9 @@ table select {
   font-style: normal;
   font-weight: bold;
 }
+
+.statbox-table th,
+.statbox-table td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}

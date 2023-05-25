@@ -93,7 +93,6 @@ function App() {
         setRoles(newRoles);
       }
     }
-    console.log(users.concat(newUser));
     setUsers(users.concat(newUser));
     setBasicStats({ ...basicStats, latestJoinDate: newUser.joinDate });
   };
@@ -102,16 +101,18 @@ function App() {
     <div className="root-container">
       <Header text="Gamer stats" />
       <div className="main-container">
-        <div className="form-and-header-container">
-          <Header2 text="Join" />
-          <div className="form-container">
-            <Form users={users} save={handleSave} rolesGiven={roles} />
+        <div>
+          <div className="form-and-header-container">
+            <Header2 text="Join" />
+            <div className="form-container">
+              <Form users={users} save={handleSave} rolesGiven={roles} />
+            </div>
           </div>
-        </div>
-        <div className="stats-and-header-container">
-          <Header2 text="Stats" />
-          <div className="stats-container">
-            <Statbox users={users} roles={roles} basicStats={basicStats} />
+          <div className="stats-and-header-container">
+            <Header2 text="Stats" />
+            <div className="stats-container">
+              <Statbox users={users} roles={roles} basicStats={basicStats} />
+            </div>
           </div>
         </div>
         <div className="list-and-header-container">
