@@ -6,7 +6,7 @@ const UserLi = ({ user }) => {
     <li className="list-item" key={user.id}>
       <UserName user={user} /> usually plays{" "}
       <i className="role-on-list">{user.role}</i>, joined{" "}
-      <i className="date-on-list">{`${joinDate.getDay()}.${joinDate.getMonth()}.${joinDate.getFullYear()}`}</i>
+      <i className="date-on-list">{`${joinDate.getDate()}.${joinDate.getMonth()}.${joinDate.getFullYear()}`}</i>
     </li>
   );
 };

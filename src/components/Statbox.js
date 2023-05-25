@@ -50,6 +50,14 @@ const Statbox = ({ users, roles }) => {
           </th>
           <td>{selectedRole.count}</td>
         </tr>
+        <tr>
+          <th>Earliest join date:</th>
+          <td>{`${users[0].joinDate.getDate()}.${users[0].joinDate.getMonth()}.${users[0].joinDate.getFullYear()}`}</td>
+        </tr>
+        <tr>
+          <th>Average stay time:</th>
+          <td>???</td>
+        </tr>
       </tbody>
     </table>
   );
