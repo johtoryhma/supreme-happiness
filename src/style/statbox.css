@@ -18,7 +18,7 @@ tr {
   border-color: #d6eeee;
 }
 
-tr:nth-child(odd) {
+tr:nth-child(even) {
   background-color: #d6eeee;
 }
 
