@@ -2,11 +2,11 @@ import { useState } from "react";
 import moment from "moment/moment";
 
 import Form from "./components/Form";
-import UserList from "./components/UserList";
 import Statbox from "./components/Statbox";
 import Header from "./components/Header";
 import "./App.css";
 import Header2 from "./components/Header2";
+import UserTable from "./components/UserTable";
 
 function App() {
   const [users, setUsers] = useState([
@@ -114,9 +114,11 @@ function App() {
             <Statbox users={users} roles={roles} basicStats={basicStats} />
           </div>
         </div>
-        <div className="list-container">
+        <div className="list-and-header-container">
           <Header2 text="Users" />
-          <UserList users={users} />
+          <div className="list-container">
+            <UserTable users={users} />
+          </div>
         </div>
       </div>
     </div>

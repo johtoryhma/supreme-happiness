@@ -1,0 +1,66 @@
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  min-width: 10em;
+}
+
+thead {
+  border: 3px solid #d6eeee;
+}
+
+thead th {
+  text-align: center;
+}
+
+td {
+  min-width: 4em;
+  text-align: center;
+  position: relative;
+}
+
+th,
+td,
+tr {
+  border-color: #d6eeee;
+  padding: 0.2em;
+  font-weight: 400;
+}
+
+tr:nth-child(even) {
+  background-color: #d6eeee;
+}
+
+table select {
+  border: dotted white;
+  margin-right: 1em;
+  background-color: #d6eeee;
+  font-size: medium;
+  float: left;
+  width: 6em;
+}
+
+.user-card {
+  visibility: hidden;
+  position: absolute;
+  background: white;
+  padding: 0.5em;
+  box-shadow: 3px 6px 10px rgb(43, 43, 43);
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  z-index: 8;
+}
+
+.name-on-list {
+  color: blue;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.role-on-list {
+  color: green;
+  font-style: normal;
+  font-weight: bold;
+}

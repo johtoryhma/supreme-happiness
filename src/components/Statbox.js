@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../style/statbox.css";
+import "../style/tables.css";
 
 const Statbox = ({ users, roles, basicStats }) => {
   const [selectedRole, setSelectedRole] = useState(roles[0]);
