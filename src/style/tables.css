@@ -34,9 +34,9 @@ tr:nth-child(even) {
 }
 
 table select {
-  border: dotted white;
+  border: dotted #d6eeee;
   margin-right: 1em;
-  background-color: #d6eeee;
+  background-color: white;
   font-size: medium;
   float: left;
   width: 6em;
