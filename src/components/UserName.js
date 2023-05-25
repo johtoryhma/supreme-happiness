@@ -20,7 +20,7 @@ const UserName = ({ user }) => {
 
   return (
     <i className="name-on-list" onMouseEnter={showCard} onMouseLeave={hideCard}>
-      {user.name}
+      {user.name.length > 15 ? user.name.slice(0, 15) + "..." : user.name}
       <div
         ref={cardRef}
         className="user-card"
@@ -34,27 +34,30 @@ const UserName = ({ user }) => {
             : {}
         }
       >
-        User is {user.name} and looks like this:
-        <BigHead
-          accessory={user.avatar.accessory}
-          body={user.avatar.body}
-          circleColor={user.avatar.circleColor}
-          clothing={user.avatar.clothing}
-          clothingColor={user.avatar.clothingColor}
-          eyebrows={user.avatar.eyebrows}
-          eyes={user.avatar.eyes}
-          facialHair={user.avatar.facialHair}
-          graphic={user.avatar.graphic}
-          hair={user.avatar.hair}
-          hairColor={user.avatar.hairColor}
-          hat={user.avatar.hat}
-          hatColor={user.avatar.hatColor}
-          lashes={user.avatar.lashes}
-          lipColor={user.avatar.lipColor}
-          mask="true"
-          mouth={user.avatar.mouth}
-          skinTone={user.avatar.skinTone}
-        />
+        <div>
+          User is <div className="name-on-list">{user.name}</div> and looks like
+          this:
+          <BigHead
+            accessory={user.avatar.accessory}
+            body={user.avatar.body}
+            circleColor={user.avatar.circleColor}
+            clothing={user.avatar.clothing}
+            clothingColor={user.avatar.clothingColor}
+            eyebrows={user.avatar.eyebrows}
+            eyes={user.avatar.eyes}
+            facialHair={user.avatar.facialHair}
+            graphic={user.avatar.graphic}
+            hair={user.avatar.hair}
+            hairColor={user.avatar.hairColor}
+            hat={user.avatar.hat}
+            hatColor={user.avatar.hatColor}
+            lashes={user.avatar.lashes}
+            lipColor={user.avatar.lipColor}
+            mask="true"
+            mouth={user.avatar.mouth}
+            skinTone={user.avatar.skinTone}
+          />
+        </div>
       </div>
     </i>
   );

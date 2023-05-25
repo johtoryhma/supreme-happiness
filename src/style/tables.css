@@ -2,7 +2,7 @@ table {
   border-collapse: collapse;
 }
 
-th {
+.statbox-table th {
   text-align: left;
   min-width: 10em;
 }
@@ -15,17 +15,20 @@ thead th {
   text-align: center;
 }
 
-td {
+.statbox-table td {
   min-width: 4em;
-  text-align: center;
+}
+
+td {
   position: relative;
+  text-align: center;
 }
 
 th,
 td,
 tr {
   border-color: #d6eeee;
-  padding: 0.2em;
+  padding: 0.3em;
   font-weight: 400;
 }
 
@@ -69,4 +72,13 @@ table select {
 .statbox-table td {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+}
+
+.userlist-name-head {
+  min-width: 10em;
+}
+
+i > div {
+  font-weight: normal;
+  color: black;
 }

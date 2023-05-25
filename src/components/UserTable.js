@@ -7,7 +7,7 @@ const UserTable = ({ users }) => {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
+          <th className="userlist-name-head">Name</th>
           <th>Role</th>
           <th>Joining date</th>
         </tr>
