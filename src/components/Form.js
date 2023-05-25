@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../style/form.css";
+import { BigHead } from "@bigheads/core";
+import { getRandomOptions } from "../modules/getRandomOptions.ts";
 
 /**
  *
@@ -17,9 +19,10 @@ const Form = ({ users, save, rolesGiven }) => {
   );
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
+  const [avatar, setAvatar] = useState(getRandomOptions());
 
   /**
-   * Changes the role and sets custom validity if needed
+   * Changes the role and sets   custom validity if needed
    * @param {event} event
    */
   const changeRole = (event) => {
@@ -73,13 +76,12 @@ const Form = ({ users, save, rolesGiven }) => {
     event.preventDefault();
 
     if (!event.target.checkValidity()) {
-      //console.log("oli vikoja validityssä");
       event.target.reportValidity();
     } else {
-      //console.log("ei ollut vikoja");
-      save({ name: name, role: role });
+      save({ name: name, role: role, avatar: avatar });
       setName("");
       setRole(roles[0].value);
+      setAvatar(getRandomOptions());
       event.target.reset();
     }
   };
@@ -97,19 +99,44 @@ const Form = ({ users, save, rolesGiven }) => {
           maxLength={25}
         ></input>
       </label>
-      <label>
-        Role:
-        <select required onChange={changeRole}>
-          {roles.map((role) => {
-            return (
-              <option key={role.id} value={role.value}>
-                {role.name}
-              </option>
-            );
-          })}
-        </select>
-      </label>
-      <button type="submit">Save</button>
+      <select required onChange={changeRole}>
+        {roles.map((role) => {
+          return (
+            <option key={role.id} value={role.value}>
+              {role.name}
+            </option>
+          );
+        })}
+      </select>
+      <div>
+        <BigHead
+          accessory={avatar.accessory}
+          body={avatar.body}
+          circleColor={avatar.circleColor}
+          clothing={avatar.clothing}
+          clothingColor={avatar.clothingColor}
+          eyebrows={avatar.eyebrows}
+          eyes={avatar.eyes}
+          facialHair={avatar.facialHair}
+          graphic={avatar.graphic}
+          hair={avatar.hair}
+          hairColor={avatar.hairColor}
+          hat={avatar.hat}
+          hatColor={avatar.hatColor}
+          lashes={avatar.lashes}
+          lipColor={avatar.lipColor}
+          mask={avatar.mask}
+          faceMask={avatar.faceMask}
+          mouth={avatar.mouth}
+          skinTone={avatar.skinTone}
+        />
+        <button type="button" onClick={() => setAvatar(getRandomOptions())}>
+          Random Avatar
+        </button>
+      </div>
+      <button id="save-button" type="submit">
+        Save
+      </button>
     </form>
   );
 };
