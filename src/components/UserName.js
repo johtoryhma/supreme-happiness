@@ -23,7 +23,6 @@ const UserName = ({ user }) => {
   };
 
   useEffect(() => {
-    console.log("clicked?", clicked);
     document.addEventListener("click", handleClickOutside, true);
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
