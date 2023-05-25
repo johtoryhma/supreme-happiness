@@ -60,6 +60,10 @@ body {
   justify-content: center;
 }
 
+.stats-container {
+  padding: 0em 1em 1em 1em;
+}
+
 .list-container {
   min-width: 50%;
 }
