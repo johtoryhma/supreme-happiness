@@ -42,7 +42,7 @@ body {
   justify-content: center;
 }
 
-.list-container,
+.list-and-header-container,
 .form-and-header-container,
 .stats-and-header-container {
   max-width: 20em;
@@ -52,6 +52,7 @@ body {
   background-color: white;
   box-shadow: 3px 6px 10px rgb(43, 43, 43);
   position: relative;
+  max-height: fit-content;
 }
 
 .form-container,
@@ -60,6 +61,11 @@ body {
   justify-content: center;
 }
 
+.stats-container,
 .list-container {
-  min-width: 50%;
+  padding: 0em 1em 1em 1em;
+}
+
+.list-and-header-container {
+  min-width: fit-content;
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../style/statbox.css";
+import "../style/tables.css";
 
 const Statbox = ({ users, roles, basicStats }) => {
   const [selectedRole, setSelectedRole] = useState(roles[0]);
@@ -25,7 +25,7 @@ const Statbox = ({ users, roles, basicStats }) => {
   };
 
   return (
-    <table>
+    <table className="statbox-table">
       <tbody>
         <tr>
           <th>User count:</th>

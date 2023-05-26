@@ -1,10 +1,37 @@
 import { BigHead } from "@bigheads/core";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+/**
+ * Makes username hoverable and clickable so that
+ * the usercard is shown if mouse clicks or hovers over the name
+ * Now works so that one can be clicked and another one hovered over
+ * at the same time
+ * @param {object} user
+ * @returns
+ */
 const UserName = ({ user }) => {
   const [show, setShow] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [cardPosition, setCardPosition] = useState({ top: 0, left: 0 });
   const cardRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (cardRef.current && !cardRef.current.contains(event.target)) {
+      setClicked(false);
+      setShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [clicked]);
+
+  const handleClicked = (event) => {
+    setClicked(true);
+  };
 
   const showCard = (e) => {
     const cardRect = cardRef.current.getBoundingClientRect();
@@ -19,13 +46,18 @@ const UserName = ({ user }) => {
   };
 
   return (
-    <i className="name-on-list" onMouseEnter={showCard} onMouseLeave={hideCard}>
-      {user.name}
+    <i
+      className="name-on-list"
+      onClick={handleClicked}
+      onMouseEnter={showCard}
+      onMouseLeave={hideCard}
+    >
+      {user.name.length > 15 ? user.name.slice(0, 15) + "..." : user.name}
       <div
         ref={cardRef}
         className="user-card"
         style={
-          show
+          clicked || show
             ? {
                 visibility: "visible",
                 top: cardPosition.top,
