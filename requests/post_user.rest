@@ -24,3 +24,59 @@ Content-Type: application/json
         "skinTone":"brown"
     }
 }
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "name": "kissa",
+    "role": "tank",
+    "avatar": {
+        "accessory":"shades",
+        "body":"chest",
+        "clothing":"tankTop",
+        "clothingColor":"black",
+        "eyebrows":"angry",
+        "eyes":"wink",
+        "facialHair":"mediumBeard",
+        "graphic":"vue",
+        "hair":"short",
+        "hairColor":"black",
+        "hat":"none",
+        "hatColor":"green",
+        "lashes":"true",
+        "lipColor":"purple",
+        "mask":"true",
+        "mouth":"open",
+        "skinTone":"brown"
+    }
+}
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "name": "koira",
+    "role": "healer",
+    "avatar": {
+        "accessory":"roundGlasses",
+        "body":"breasts",
+        "clothing":"vneck",
+        "clothingColor":"red",
+        "eyebrows":"leftLowered",
+        "eyes":"dizzy",
+        "facialHair":"none3",
+        "graphic":"react",
+        "hair":"short",
+        "hairColor":"black",
+        "hat":"none5",
+        "hatColor":"green",
+        "lashes":"true",
+        "lipColor":"purple",
+        "mask":"true",
+        "mouth":"open",
+        "skinTone":"brown"
+    }
+}

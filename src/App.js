@@ -18,14 +18,14 @@ function App() {
   });
 
   const [roles, setRoles] = useState([
-    { name: "tank", id: 1, count: 1 }, // because users have 1
-    { name: "healer", id: 2, count: 1 }, // because users have 1
+    { name: "tank", id: 1, count: 0 }, // because users have 1
+    { name: "healer", id: 2, count: 0 }, // because users have 1
     { name: "dps", id: 3, count: 0 },
     { name: "flex", id: 4, count: 0 },
   ]);
 
   useEffect(() => {
-    console.log("use effect!");
+    //console.log("use effect!");
     userService.getAll().then((initialUsers) => {
       setUsers(
         initialUsers.map((iUser) => {
@@ -35,11 +35,47 @@ function App() {
           };
         })
       );
-      console.log(initialUsers);
-      setBasicStats({
-        firstJoinDate: initialUsers[0].joinDate,
-        latestJoinDate: initialUsers[1].joinDate,
-      });
+      //console.log(initialUsers);
+
+      // TODO: nyt ei tule oikeasti uusin date latestJoinDateen
+      if (initialUsers.length > 0) {
+        setBasicStats({
+          firstJoinDate: initialUsers[0].joinDate,
+          latestJoinDate: initialUsers[0].joinDate,
+        });
+      } else {
+        setBasicStats({
+          firstJoinDate: moment(),
+          latestJoinDate: moment(),
+        });
+      }
+
+      let roleCounts = { tank: 0, healer: 0, dps: 0, flex: 0 };
+      for (let user of initialUsers) {
+        if (user.role === "tank") {
+          roleCounts.tank += 1;
+        } else if (user.role === "healer") {
+          roleCounts.healer += 1;
+        } else if (user.role === "dps") {
+          roleCounts.dps += 1;
+        } else {
+          roleCounts.flex += 1;
+        }
+      }
+      let newRoles = [...roles];
+      for (let role of newRoles) {
+        if (role.name === "tank") {
+          role.count = roleCounts.tank;
+        } else if (role.name === "healer") {
+          role.count = roleCounts.healer;
+        } else if (role.name === "dps") {
+          role.count = roleCounts.dps;
+        } else {
+          role.count = roleCounts.flex;
+        }
+      }
+      //console.log(newRoles);
+      setRoles(newRoles);
     });
   }, []);
   //useEffect(() => { document.body.style.backgroundColor = 'aquamarine' }, []);
