@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json());
+
 let users = [
   {
     id: 1,
@@ -65,6 +67,30 @@ app.get("/api/users", (request, response) => {
 app.get("/api/users/:id", (request, response) => {
   const id = Number(request.params.id);
   const user = users.find((user) => user.id === id);
+  response.json(user);
+});
+
+app.post("/api/users", (request, response) => {
+  const maxId = users.length > 0 ? Math.max(...users.map((n) => n.id)) : 0;
+  const body = request.body;
+  console.log(body);
+
+  if (!body.name || !body.role || !body.avatar) {
+    return response.status(400).json({
+      error: "name, role or avatar missing",
+    });
+  }
+
+  const user = {
+    id: maxId + 1,
+    name: body.name,
+    role: body.role,
+    joinDate: new Date(),
+    avatar: body.avatar,
+  };
+
+  users = users.concat(user);
+
   response.json(user);
 });
 
