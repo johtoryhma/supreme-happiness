@@ -1,6 +1,9 @@
+const moment = require("moment");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
 let users = [
@@ -8,7 +11,7 @@ let users = [
     id: 1,
     name: "kissa",
     role: "tank",
-    joinDate: "20121116", //moment("20121116", "YYYYMMDD")
+    joinDate: moment("20121116", "YYYYMMDD"),
     avatar: {
       accessory: "shades",
       body: "chest",
@@ -33,7 +36,7 @@ let users = [
     id: 2,
     name: "koira",
     role: "healer",
-    joinDate: "20150801", //moment("20150801", "YYYYMMDD")
+    joinDate: moment("20150801", "YYYYMMDD"),
     avatar: {
       accessory: "roundGlasses",
       body: "breasts",
@@ -85,7 +88,7 @@ app.post("/api/users", (request, response) => {
     id: maxId + 1,
     name: body.name,
     role: body.role,
-    joinDate: new Date(),
+    joinDate: moment(new Date()),
     avatar: body.avatar,
   };
 
@@ -94,7 +97,7 @@ app.post("/api/users", (request, response) => {
   response.json(user);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

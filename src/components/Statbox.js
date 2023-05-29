@@ -1,4 +1,5 @@
 import { useState } from "react";
+import moment from "moment";
 import "../style/tables.css";
 
 const Statbox = ({ users, roles, basicStats }) => {
@@ -52,15 +53,15 @@ const Statbox = ({ users, roles, basicStats }) => {
         </tr>
         <tr>
           <th>Earliest join date:</th>
-          <td>{basicStats.firstJoinDate.format("D.M.YYYY")}</td>
+          <td>{moment(basicStats.firstJoinDate).format("D.M.YYYY")}</td>
         </tr>
         <tr>
           <th>...which was:</th>
-          <td>{basicStats.firstJoinDate.fromNow()}</td>
+          <td>{moment(basicStats.firstJoinDate).fromNow()}</td>
         </tr>
         <tr>
           <th>Latest join date</th>
-          <td>{basicStats.latestJoinDate.format("D.M.YYYY")}</td>
+          <td>{moment(basicStats.latestJoinDate).format("D.M.YYYY")}</td>
         </tr>
       </tbody>
     </table>

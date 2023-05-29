@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment/moment";
 
 import Form from "./components/Form";
@@ -7,64 +7,14 @@ import Header from "./components/Header";
 import "./App.css";
 import Header2 from "./components/Header2";
 import UserTable from "./components/UserTable";
+import userService from "./services/users";
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: "kissa",
-      role: "tank",
-      joinDate: moment("20121116", "YYYYMMDD"),
-      avatar: {
-        accessory: "shades",
-        body: "chest",
-        clothing: "tankTop",
-        clothingColor: "black",
-        eyebrows: "angry",
-        eyes: "wink",
-        facialHair: "mediumBeard",
-        graphic: "vue",
-        hair: "short",
-        hairColor: "black",
-        hat: "none",
-        hatColor: "green",
-        lashes: "true",
-        lipColor: "purple",
-        mask: "true",
-        mouth: "open",
-        skinTone: "brown",
-      },
-    },
-    {
-      id: 2,
-      name: "koira",
-      role: "healer",
-      joinDate: moment("20150801", "YYYYMMDD"),
-      avatar: {
-        accessory: "roundGlasses",
-        body: "breasts",
-        clothing: "vneck",
-        clothingColor: "red",
-        eyebrows: "leftLowered",
-        eyes: "dizzy",
-        facialHair: "none3",
-        graphic: "react",
-        hair: "short",
-        hairColor: "black",
-        hat: "none5",
-        hatColor: "green",
-        lashes: "true",
-        lipColor: "purple",
-        mask: "true",
-        mouth: "open",
-        skinTone: "brown",
-      },
-    },
-  ]);
+  const [users, setUsers] = useState([]);
   // very badly executed:
   const [basicStats, setBasicStats] = useState({
-    firstJoinDate: users[0].joinDate,
-    latestJoinDate: users[1].joinDate,
+    firstJoinDate: "", //users[0].joinDate,
+    latestJoinDate: "", //users[1].joinDate,
   });
 
   const [roles, setRoles] = useState([
@@ -74,6 +24,24 @@ function App() {
     { name: "flex", id: 4, count: 0 },
   ]);
 
+  useEffect(() => {
+    console.log("use effect!");
+    userService.getAll().then((initialUsers) => {
+      setUsers(
+        initialUsers.map((iUser) => {
+          return {
+            ...iUser,
+            joinDate: moment(iUser.joinDate),
+          };
+        })
+      );
+      console.log(initialUsers);
+      setBasicStats({
+        firstJoinDate: initialUsers[0].joinDate,
+        latestJoinDate: initialUsers[1].joinDate,
+      });
+    });
+  }, []);
   //useEffect(() => { document.body.style.backgroundColor = 'aquamarine' }, []);
 
   /**
@@ -81,9 +49,13 @@ function App() {
    * @param {object} user
    */
   const handleSave = (user) => {
+    /*     let id = 0;
+    if (users.length > 0) {
+      id = users.slice(-1)[0].id + 1;
+    } */
     let newUser = {
       ...user,
-      id: users.slice(-1)[0].id + 1,
+      //id: id,
       joinDate: moment(),
     };
     let newRoles = [...roles];
@@ -93,6 +65,7 @@ function App() {
         setRoles(newRoles);
       }
     }
+    userService.create(newUser);
     setUsers(users.concat(newUser));
     setBasicStats({ ...basicStats, latestJoinDate: newUser.joinDate });
   };
