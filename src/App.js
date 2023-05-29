@@ -65,9 +65,16 @@ function App() {
         setRoles(newRoles);
       }
     }
-    userService.create(newUser);
-    setUsers(users.concat(newUser));
-    setBasicStats({ ...basicStats, latestJoinDate: newUser.joinDate });
+
+    userService.create(newUser).then((returnedUser) => {
+      setUsers(
+        users.concat({
+          ...returnedUser,
+          joinDate: moment(returnedUser.joinDate),
+        })
+      );
+      setBasicStats({ ...basicStats, latestJoinDate: newUser.joinDate });
+    });
   };
 
   return (
