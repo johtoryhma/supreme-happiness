@@ -18,15 +18,15 @@ function App() {
   });
 
   const [roles, setRoles] = useState([
-    { name: "tank", id: 1, count: 0 }, // because users have 1
-    { name: "healer", id: 2, count: 0 }, // because users have 1
+    { name: "tank", id: 1, count: 0 },
+    { name: "healer", id: 2, count: 0 },
     { name: "dps", id: 3, count: 0 },
     { name: "flex", id: 4, count: 0 },
   ]);
 
   useEffect(() => {
-    //console.log("use effect!");
     userService.getAll().then((initialUsers) => {
+      // list of users mapped
       let newUsers = initialUsers.map((iUser) => {
         return {
           ...iUser,
@@ -36,7 +36,7 @@ function App() {
       setUsers(newUsers);
       //console.log(initialUsers);
 
-      // TODO: nyt ei tule oikeasti uusin date latestJoinDateen
+      // set basic stats according to users
       if (newUsers.length > 0) {
         let firstDate = newUsers[0].joinDate;
         let lastDate = newUsers[0].joinDate;
@@ -61,7 +61,7 @@ function App() {
       }
 
       let roleCounts = { tank: 0, healer: 0, dps: 0, flex: 0 };
-      for (let user of initialUsers) {
+      for (let user of newUsers) {
         if (user.role === "tank") {
           roleCounts.tank += 1;
         } else if (user.role === "healer") {
@@ -87,8 +87,9 @@ function App() {
       //console.log(newRoles);
       setRoles(newRoles);
     });
+    // TODO: wtf?
+    // eslint-disable-next-line
   }, []);
-  //useEffect(() => { document.body.style.backgroundColor = 'aquamarine' }, []);
 
   /**
    * Adds user to users
