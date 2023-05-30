@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../style/form.css";
 import { BigHead } from "@bigheads/core";
 import { getRandomOptions } from "../modules/getRandomOptions.ts";
+import CustomingAvatar from "./CustomingAvatar";
 
 /**
  *
@@ -20,6 +21,7 @@ const Form = ({ users, save, rolesGiven }) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState(roles[0].value);
   const [avatar, setAvatar] = useState(getRandomOptions());
+  const [customingAvatar, setCustomingAvatar] = useState(false);
 
   /**
    * Changes the role and sets   custom validity if needed
@@ -64,6 +66,12 @@ const Form = ({ users, save, rolesGiven }) => {
     }
     return false;
   }
+
+  const handleSaveAvatar = (changedAvatar) => {
+    console.log("Form:", changedAvatar);
+    setAvatar(changedAvatar);
+    setCustomingAvatar(false);
+  };
 
   /**
    * Handles the event, when clicking "Save"-button
@@ -130,9 +138,31 @@ const Form = ({ users, save, rolesGiven }) => {
           mouth={avatar.mouth}
           skinTone={avatar.skinTone}
         />
-        <button type="button" onClick={() => setAvatar(getRandomOptions())}>
-          Random Avatar
-        </button>
+        <div className="avatar-buttons-container">
+          <button
+            className="avatar-button"
+            type="button"
+            onClick={() => setAvatar(getRandomOptions())}
+          >
+            Random Avatar
+          </button>
+          <button
+            className="avatar-button"
+            type="button"
+            onClick={() => {
+              setCustomingAvatar(true);
+            }}
+          >
+            Customize Avatar
+          </button>
+          {customingAvatar && (
+            <CustomingAvatar
+              avatar={avatar}
+              handleSaveAvatar={handleSaveAvatar}
+              handleReturnWithoutSaving={() => setCustomingAvatar(false)}
+            />
+          )}
+        </div>
       </div>
       <button id="save-button" type="submit">
         Save
