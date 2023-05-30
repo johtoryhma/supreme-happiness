@@ -27,21 +27,31 @@ function App() {
   useEffect(() => {
     //console.log("use effect!");
     userService.getAll().then((initialUsers) => {
-      setUsers(
-        initialUsers.map((iUser) => {
-          return {
-            ...iUser,
-            joinDate: moment(iUser.joinDate),
-          };
-        })
-      );
+      let newUsers = initialUsers.map((iUser) => {
+        return {
+          ...iUser,
+          joinDate: moment(iUser.joinDate),
+        };
+      });
+      setUsers(newUsers);
       //console.log(initialUsers);
 
       // TODO: nyt ei tule oikeasti uusin date latestJoinDateen
-      if (initialUsers.length > 0) {
+      if (newUsers.length > 0) {
+        let firstDate = newUsers[0].joinDate;
+        let lastDate = newUsers[0].joinDate;
+
+        for (let user of newUsers) {
+          if (user.joinDate.isBefore(firstDate)) {
+            firstDate = user.joinDate;
+          } else if (lastDate.isBefore(user.joinDate)) {
+            lastDate = user.joinDate;
+          }
+        }
+
         setBasicStats({
-          firstJoinDate: initialUsers[0].joinDate,
-          latestJoinDate: initialUsers[0].joinDate,
+          firstJoinDate: firstDate,
+          latestJoinDate: lastDate,
         });
       } else {
         setBasicStats({
