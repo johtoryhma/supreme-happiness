@@ -78,6 +78,7 @@ select:hover {
   justify-content: space-between;
   padding: 0;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .custom-avatar-container input {
