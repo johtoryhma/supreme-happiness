@@ -45,6 +45,45 @@ select:hover {
   background-color: #c4e9e9;
 }
 
+.avatar-buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.avatar-buttons-container > button {
+  flex: auto;
+  max-width: 45%;
+  font-size: medium;
+}
+
 #save-button {
   font-size: large;
+}
+
+.custom-avatar-container {
+  display: block;
+  position: absolute;
+  top: -5em;
+  background-color: white;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  box-shadow: 3px 5px 5px rgb(53, 53, 53);
+}
+
+.custom-avatar-container label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.custom-avatar-container input {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 50%;
 }
