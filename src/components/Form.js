@@ -68,7 +68,6 @@ const Form = ({ users, save, rolesGiven }) => {
   }
 
   const handleSaveAvatar = (changedAvatar) => {
-    console.log("Form:", changedAvatar);
     setAvatar(changedAvatar);
     setCustomingAvatar(false);
   };

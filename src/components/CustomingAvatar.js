@@ -1,5 +1,6 @@
 import { BigHead } from "@bigheads/core";
 import { useState } from "react";
+import Slider from "./Slider";
 
 const CustomingAvatar = ({
   avatar,
@@ -8,49 +9,86 @@ const CustomingAvatar = ({
 }) => {
   const [changedAvatar, setChangedAvatar] = useState(avatar);
 
+  const all = {
+    accessory: ["none", "roundGlasses", "tinyGlasses", "shaders"],
+    body: ["chest", "breasts"],
+    clothing: ["naked", "shirt", "dressShirt", "vneck", "tankTop", "dress"],
+    clothingColor: ["white", "blue", "black", "green", "red"],
+    eyebrows: ["raised", "leftLowered", "serious", "angry", "concerned"],
+    eyes: [
+      "normal",
+      "leftTwitch",
+      "happy",
+      "content",
+      "squint",
+      "simple",
+      "dizzy",
+      "wink",
+      "heart",
+    ],
+    facialHair: ["none", "none2", "none3", "stubble", "mediumBeard"],
+    graphic: ["none", "redwood", "gatsby", "vue", "react", "graphQL"],
+    hair: [
+      "none",
+      "long",
+      "bun",
+      "short",
+      "pixie",
+      "balding",
+      "buzz",
+      "afro",
+      "bob",
+    ],
+    hairColor: ["blonde", "orange", "black", "white", "brown", "blue", "pink"],
+    hat: ["none", "none2", "none3", "none4", "none5", "beanie", "turban"],
+    hatColor: ["white", "blue", "black", "green", "red"],
+    lashes: ["true", "false"],
+    lipColor: ["red", "purple", "pink", "turqoise", "green"],
+    mouth: ["grin", "sad", "openSmile", "lips", "open", "serious", "tongue"],
+    skinTone: ["light", "yellow", "brown", "dark", "red", "black"],
+  };
+
   const saveAvatar = () => {
-    console.log("CustomingAvatar:", changedAvatar);
     handleSaveAvatar(changedAvatar);
   };
-  /*   <Slider
-  text="Accessory"
-  value={avatar.accessory}
-  onChange={(changed) =>
-    setChangedAvatar({ ...changedAvatar, accessory: changed })
-  }
-/> */
 
   return (
     <div className="custom-avatar-container">
-      {Object.keys(changedAvatar).map((value) => {
-        console.log(value);
+      {Object.keys(all).map((key) => {
         return (
-          <label key={value}>
-            {value} <input type="range" min="0" max="3" />
-          </label>
+          <Slider
+            key={key}
+            text={key}
+            listOfValues={all[key]}
+            value={changedAvatar[key]}
+            onChange={(changedValue) => {
+              let newAvatar = { ...changedAvatar, [key]: changedValue };
+              setChangedAvatar(newAvatar);
+            }}
+          />
         );
       })}
 
       <BigHead
-        accessory={avatar.accessory}
-        body={avatar.body}
-        circleColor={avatar.circleColor}
-        clothing={avatar.clothing}
-        clothingColor={avatar.clothingColor}
-        eyebrows={avatar.eyebrows}
-        eyes={avatar.eyes}
-        facialHair={avatar.facialHair}
-        graphic={avatar.graphic}
-        hair={avatar.hair}
-        hairColor={avatar.hairColor}
-        hat={avatar.hat}
-        hatColor={avatar.hatColor}
-        lashes={avatar.lashes}
-        lipColor={avatar.lipColor}
-        mask={avatar.mask}
-        faceMask={avatar.faceMask}
-        mouth={avatar.mouth}
-        skinTone={avatar.skinTone}
+        accessory={changedAvatar.accessory}
+        body={changedAvatar.body}
+        circleColor={changedAvatar.circleColor}
+        clothing={changedAvatar.clothing}
+        clothingColor={changedAvatar.clothingColor}
+        eyebrows={changedAvatar.eyebrows}
+        eyes={changedAvatar.eyes}
+        facialHair={changedAvatar.facialHair}
+        graphic={changedAvatar.graphic}
+        hair={changedAvatar.hair}
+        hairColor={changedAvatar.hairColor}
+        hat={changedAvatar.hat}
+        hatColor={changedAvatar.hatColor}
+        lashes={changedAvatar.lashes}
+        lipColor={changedAvatar.lipColor}
+        mask={changedAvatar.mask}
+        faceMask={changedAvatar.faceMask}
+        mouth={changedAvatar.mouth}
+        skinTone={changedAvatar.skinTone}
       />
 
       <button onClick={handleReturnWithoutSaving}>Return without save</button>
